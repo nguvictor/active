@@ -18,7 +18,7 @@ const USERS: Users[] = [
 
 
 @Injectable()
-export class UserService implements OnInit {
+export class UserService{
     getUsers(){
         return Promise.resolve(USERS);
     }
