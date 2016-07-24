@@ -1,6 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
+router.use(function(req, res, next){
+    //This makes the get method publicly accessible
+    if(req.method === "GET"){
+        return next();
+    }
+    if(req.isAuthenticated()){
+       return next();
+    }
+
+    return res.redirect('/#login');
+});
+
 router.route('/messages')
     .get(function(req, res){
         res.send({'messages':'Some Messages'});

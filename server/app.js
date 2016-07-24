@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 
 var api = require('./routes/api');
 var authenticate = require('./routes/authenticate')(passport);
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/active');
 
 var app = express();
 
