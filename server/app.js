@@ -13,6 +13,8 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/active');
 
+
+
 var app = express();
 
 // view engine setup
@@ -33,6 +35,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
+
+//Load the models
+require('./models/user.js');
+require('./models/message.js');
 
 //Init passport
 var initPassport = require('./passport-init');
