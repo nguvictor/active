@@ -7,6 +7,10 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//Load the models
+require('./models/user');
+require('./models/message');
+
 var api = require('./routes/api');
 var authenticate = require('./routes/authenticate')(passport);
 var mongoose = require('mongoose');
@@ -36,9 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Load the models
-require('./models/user.js');
-require('./models/message.js');
+
 
 //Init passport
 var initPassport = require('./passport-init');
@@ -81,3 +83,5 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+console.log('Server is Ready');
